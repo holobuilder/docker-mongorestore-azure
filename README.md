@@ -5,10 +5,11 @@ A docker image performing a restore operation via mongorestore from an Azure Sto
 Single-Shot-Run:
 ```
   docker run --rm \
-    --link <mongodb container>:mongodb \
+      --link <mongodb container>:mongodb \
+    [-e "MONGODB_HOST=<mongodb host> \]
     -e "BACKUP_NAME=<backup name>" \
     -e "AZURE_CONTAINER=<storage container name>" \
     -e "AZURE_STORAGE_ACCOUNT=<storage account name" \
     -e "AZURE_STORAGE_KEY=<storage account key>" \
-    phimar/mongorestore-azure`
+    holobuilder/mongorestore-azure`
 ```
