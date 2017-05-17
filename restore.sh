@@ -3,7 +3,9 @@ set -e
 
 BACKUP_NAME="${BACKUP_NAME}"
 
-MONGO_DB=${MONGO_DB}
+MONGO_HOST=${MONGODB_HOST:=$MONGODB_PORT_27017_TCP_ADDR}
+MONGO_DB=${MONGODB_DB}
+
 
 BACKUP_FILE="/tmp/$BACKUP_NAME.tgz"
 BACKUP_FOLDER="/tmp/$BACKUP_NAME/"
@@ -12,7 +14,7 @@ restore_backup() {
 
   tar -zxvf $BACKUP_FILE -C /tmp/
 
-  /mongorestore -h $MONGODB_PORT_27017_TCP_ADDR $BACKUP_FOLDER
+  /mongorestore -h $MONGO_HOST $BACKUP_FOLDER
 
 }
 
